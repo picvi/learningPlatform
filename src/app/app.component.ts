@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BgPastService } from './bg-past.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'learningPlatform';
+  constructor(private pastTense: BgPastService) {}
+  past = this.pastTense.tasks;
 }
