@@ -7,7 +7,7 @@ export class BgPastService {
   tasks = [
     {
       'question': 'When did you last meet your friend?',
-      'pic': 'pics/friends.jpg'
+      'pic': './pics/friends.jpg'
     },
     {
       'question': 'What was the last book you read?',
