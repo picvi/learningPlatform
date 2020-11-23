@@ -11,11 +11,12 @@ export class AppComponent {
 
   constructor(private pastTense: BgPastService) {}
   past = this.pastTense.tasks;
-  counter:number =0;
+  counter:number = 0;
+  currentTask: any;
 
   pickTask(boardGame:any) {
-    this.counter <= boardGame.length ? console.log(boardGame[this.counter]?.question) : console.log('You finished the game!')
-    
+    this.currentTask = boardGame[this.counter]
+    this.counter <= boardGame.length ? console.log(this.currentTask) : console.log('You finished the game!')
   }
 
   getTask(result:number) {

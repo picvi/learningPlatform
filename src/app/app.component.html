@@ -5,7 +5,7 @@
 			*ngFor='let task of past'
 			[question]='task.question'
 			[path]='task.pic'
-			class="col-sm-6 col-md-6 col-lg-4 col-xl-3"
+			class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
     	>
   		</app-board-game-display>
 		</div>
@@ -13,6 +13,19 @@
 	<div class="col-lg-3 col-md-2 col-12">
 		<app-dice (onResult)=getTask($event)></app-dice>
 	</div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      	<span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+        {{this.currentTask.question}}
+      </div>
+    </div>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
