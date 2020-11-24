@@ -16,7 +16,7 @@ export class AppComponent {
 
   pickTask(boardGame:any) {
     this.currentTask = boardGame[this.counter]
-    this.counter <= boardGame.length ? console.log(this.currentTask) : console.log('You finished the game!')
+    this.counter <= boardGame.length ? console.log(this.currentTask) : console.log("You've finished the game!")
   }
 
   getTask(result:number) {

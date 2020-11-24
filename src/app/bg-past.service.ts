@@ -7,7 +7,7 @@ export class BgPastService {
   tasks = [
     {
       'question': 'When did you last meet your friend?',
-      'pic': 'assets/pics/friends.jpg'
+      'pic': 'assets/pics/friends.jpeg'
     },
     {
       'question': 'What was the last book you read?',
@@ -19,63 +19,63 @@ export class BgPastService {
     },
     {
       'question': 'Who did you last give a present to?',
-      'pic': ''
+      'pic': 'assets/pics/presents.jpg'
     },
     {
       'question': 'When did you last go to the beach?',
-      'pic': ''
+      'pic': 'assets/pics/beach.jpg'
     },
     {
       'question': 'When did you last see a doctor', 
-      'pic': ''
+      'pic': 'assets/pics/doctor.jpeg'
     },
     {
       'question': 'When did you last ride a bicycle',
-      'pic': ''
+      'pic': 'assets/pics/bicycle.jpg'
     },
     {
       'question': 'When did you last have a party?',
-      'pic': ''
+      'pic': 'assets/pics/party.jpg'
     },
     {
       'question': 'When did you last take a photo?',
-      'pic': ''
+      'pic': 'assets/pics/photo.jpg'
     },
     {
       'question': 'When did you last get lost?',
-      'pic': ''
+      'pic': 'assets/pics/gettingLost.jpg'
     },
     {
       'question': 'Which song did you sing last?',
-      'pic': ''
+      'pic': 'assets/pics/singing.jpeg'
     },
     {
       'question': 'When did you last drink coffee?',
-      'pic': ''
+      'pic': 'assets/pics/coffee.jpg'
     },
     {
       'question': 'Who did you last buy flowers for?',
-      'pic': ''
+      'pic': 'assets/pics/flowers.jpeg'
     },
     {
       'question': 'What did you wear yesterday?',
-      'pic': ''
+      'pic': 'assets/pics/wear.jpeg'
     },
     {
       'question': 'What did you buy yesterday?',
-      'pic': ''
+      'pic': 'assets/pics/purchases.jpg'
     },
     {
       'question': 'How many phone calls did you make yesterday?',
-      'pic': ''
+      'pic': 'assets/pics/phoneCalls.jpg'
     },
     {
       'question': "Where did you spend New Year's Eve last year?",
-      'pic': ''
+      'pic': 'assets/pics/newYearEve.jpg'
     },
     {
       'question': 'What time did you go to bed last night?',
-      'pic': ''
+      'pic': 'assets/pics/sleeping.jpeg'
     }
   ]
   constructor() { }

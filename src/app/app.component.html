@@ -15,14 +15,15 @@
 	</div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="taskDisplay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       	<span aria-hidden="true">&times;</span>
       </button>
       <div class="modal-body">
-        {{this.currentTask.question}}
+		<h4 *ngIf="this.counter <=  this.past.length">{{this.currentTask.question}}</h4>
+		<h4 *ngIf="this.counter > this.past.length">You've finished the game!</h4>
       </div>
     </div>
   </div>
