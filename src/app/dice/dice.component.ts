@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dice',
@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class DiceComponent implements OnInit {
   @Output() onResult = new EventEmitter();
-  
+  @Input() isFinished!: boolean;
   diceResult!: number;
   
   constructor() { }

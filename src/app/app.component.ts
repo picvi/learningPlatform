@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { BgPastService } from './bg-past.service';
 
 @Component({
@@ -6,17 +6,26 @@ import { BgPastService } from './bg-past.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit{
   title = 'learningPlatform'; 
 
   constructor(private pastTense: BgPastService) {}
   past = this.pastTense.tasks;
   counter:number = 0;
-  currentTask: any;
+  currentTask = this.past[0];
+  finished = false;
 
-  pickTask(boardGame:any) {
-    this.currentTask = boardGame[this.counter]
-    this.counter <= boardGame.length ? console.log(this.currentTask) : console.log("You've finished the game!")
+  ngOnInit(): void {
+    
+  }
+
+  pickTask(boardGame: Array<object>) {
+    if (this.counter > boardGame.length) {
+      console.log('more')
+      this.counter = this.counter - (this.counter - boardGame.length);
+    }
+    this.currentTask = this.past[this.counter];
   }
 
   getTask(result:number) {

@@ -1,2 +1,8 @@
-<button class="btn btn-light m-5" (click)="rollDice()" data-toggle="modal" data-target="#taskDisplay">Roll Dice</button>
+<button class="btn btn-light m-5" 
+	(click)="rollDice()" 
+	data-toggle="modal" 
+	data-target="#taskDisplay"
+	ng-disabled="isFinished"
+	>Roll Dice
+</button>
 <p class="text-center"> {{ diceResult }} </p>

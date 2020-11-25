@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,  Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-board-game-display',
@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./board-game-display.component.scss']
 })
 export class BoardGameDisplayComponent implements OnInit {
-  @Input() question!: string;
   @Input() path!: string;
   
   constructor() { }

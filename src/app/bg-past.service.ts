@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
 export class BgPastService {
   tasks = [
     {
+      'pic':'assets/pics/start.jpg'
+    },
+    {
       'question': 'When did you last meet your friend?',
       'pic': 'assets/pics/friends.jpeg'
     },
@@ -76,6 +79,9 @@ export class BgPastService {
     {
       'question': 'What time did you go to bed last night?',
       'pic': 'assets/pics/sleeping.jpeg'
+    },
+    {
+      'pic': 'assets/pics/finish.jpg'
     }
   ]
   constructor() { }
