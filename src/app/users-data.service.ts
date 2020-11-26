@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class UsersDataService {
   constructor(private http: HttpClient) {}
 
-  logIn() {
+  signUp() {
     return this.http.get('http://localhost:3000/users');
   }
 }

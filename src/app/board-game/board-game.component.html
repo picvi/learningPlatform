@@ -2,9 +2,9 @@
 	<div class="col-lg-9 col-md-10 col-11">
 		<div class="card-deck">
 			<app-board-game-display 
-			*ngFor='let task of past'
+			*ngFor='let task of past, let idx = index'
 			[path]='task.pic'
-			[ngClass]="{accentCurrentCard:task === currentTask}"
+			[ngClass]="{accentCurrentCard: past.indexOf(task) === counter}"
 			class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
 			>
 			</app-board-game-display>
@@ -25,7 +25,7 @@
 			</button>
 			<div class="modal-body">
 				<h4 *ngIf="this.counter < this.past.length">{{this.currentTask.question}}</h4>
-				<h4 *ngIf="this.counter === this.past.length">You've finished the game!</h4>
+				<h4 *ngIf="this.counter === this.past.length - 1">You've finished the game!</h4>
 			</div>
 		</div>
 	</div>

@@ -32,9 +32,9 @@ export class SignUpComponent {
     console.log('Submitted form', this.form);
   }
 
-  showUserData(): void {
-    this.usersData.logIn().subscribe((response) => {
-      return this.users.push(response);
-    });
-  }
+  // showUserData(): void {
+  //   this.usersData.signUp().subscribe((response) => {
+  //     return this.users.push(response);
+  //   });
+  // }
 }

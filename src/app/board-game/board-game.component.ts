@@ -14,22 +14,18 @@ export class BoardGameComponent {
   counter = 0;
   currentTask = this.past[0];
 
-  pickTask(boardGame: Array<object>): void {
-    if (this.counter > boardGame.length) {
-      console.log('more');
-      this.counter = this.counter - (this.counter - boardGame.length);
-    }
-    this.currentTask = this.past[this.counter];
-  }
-
   getTask(result: number): void {
-    const id = setInterval(
-      () => ((this.counter += 1), console.log('step')),
-      500
-    );
+    const id = setInterval(() => {
+      if (this.counter > this.past.length) {
+        console.log('more');
+        this.counter = this.counter - (this.counter - this.past.length);
+      } else {
+        this.counter++;
+      }
+    }, 500);
     setTimeout(() => {
       clearInterval(id);
-      this.pickTask(this.past);
     }, result * 500);
+    this.currentTask = this.past[this.counter + result];
   }
 }
