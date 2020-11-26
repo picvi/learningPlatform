@@ -3,12 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BoardGameDisplayComponent } from './board-game-display/board-game-display.component';
-import { DiceComponent } from './dice/dice.component';
+import { BoardGameDisplayComponent } from './board-game/board-game-display/board-game-display.component';
+import { DiceComponent } from './board-game/dice/dice.component';
 import { HeaderComponent } from './header/header.component';
 import { SignUpComponent } from './header/sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
+import { BoardGameComponent } from './board-game/board-game.component';
+import { UsersDataService } from './users-data.service';
+
+const appRoutes: Routes = [
+  { path: 'boardGame', component: BoardGameComponent },
+  { path: 'signUp', component: SignUpComponent }
+];
 
 @NgModule({
   declarations: [
@@ -16,15 +24,17 @@ import { HttpClientModule } from '@angular/common/http';
     BoardGameDisplayComponent,
     DiceComponent,
     HeaderComponent,
-    SignUpComponent
+    SignUpComponent,
+    BoardGameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [UsersDataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

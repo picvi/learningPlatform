@@ -8,9 +8,8 @@ describe('BoardGameDisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardGameDisplayComponent ]
-    })
-    .compileComponents();
+      declarations: [BoardGameDisplayComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
