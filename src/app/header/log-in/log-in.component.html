@@ -1,0 +1,51 @@
+<div class="container-fluid">
+	<h4> Log In</h4>
+  <form formGroup="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+        </svg>
+      </label>
+      <input
+      ngClass=" {'error': form.controls['email'].invalid && form.controls['email'].touched } "
+        id="email"
+        type="email"
+        placeholder="Your e-mail"
+        class="form-control"
+        formControlName="email"
+      >
+      <p
+        *ngIf="form.controls['email'].invalid && form.controls['email'].touched"
+      > Incorrect e-mail </p>
+    </div>
+
+    <div class="form-group">
+      <label for="pass">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+          <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+        </svg>
+      </label>
+      <input 
+      ngClass=" {'error': form.controls['password'].invalid && form.controls['password'].touched } "
+      id="pass"
+      type="password"
+      placeholder="Your password"
+      class="form-control"
+      formControlName="password"
+      >
+      <p
+      *ngIf="form.controls['password'].touched && form.controls['password'].value.length === 0"
+      > The password shouldn't be empty
+      </p>
+    </div>
+    
+    <button class="btn btn-light" 
+    type="submit"
+    [disabled]="form.invalid"
+    >Log in</button>
+  </form>
+  <h4> Don't have an account?</h4>
+  <p routerLink="/signUp">Sign Up</p>
+</div>

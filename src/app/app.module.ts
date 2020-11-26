@@ -12,10 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { BoardGameComponent } from './board-game/board-game.component';
 import { UsersDataService } from './users-data.service';
+import { LogInComponent } from './header/log-in/log-in.component';
+import { GamesComponent } from './games/games.component';
 
 const appRoutes: Routes = [
   { path: 'boardGame', component: BoardGameComponent },
-  { path: 'signUp', component: SignUpComponent }
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'logIn', component: LogInComponent },
+  { path: 'games', component: GamesComponent }
 ];
 
 @NgModule({

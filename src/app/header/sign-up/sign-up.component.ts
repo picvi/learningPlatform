@@ -11,7 +11,7 @@ export class SignUpComponent {
   constructor(private usersData: UsersDataService) {}
 
   form!: FormGroup;
-  users!: Array<object>;
+  users!: any[];
 
   ngOnInit(): void {
     this.form = new FormGroup({
