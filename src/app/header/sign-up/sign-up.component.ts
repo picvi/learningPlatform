@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsersDataService } from 'src/app/users-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent {
-  constructor(private usersData: UsersDataService) {}
+export class SignUpComponent implements OnInit {
+  constructor(private http: HttpClient) {}
 
   form!: FormGroup;
   users!: any[];
@@ -30,11 +31,11 @@ export class SignUpComponent {
 
   onSubmit(): void {
     console.log('Submitted form', this.form);
+    const userDTO = {
+      name: this.form.controls.userName.value,
+      email: this.form.controls.email.value,
+      pass: this.form.controls.password.value
+    };
+    this.http.post('http://localhost:3000/edit', userDTO).subscribe();
   }
-
-  // showUserData(): void {
-  //   this.usersData.signUp().subscribe((response) => {
-  //     return this.users.push(response);
-  //   });
-  // }
 }

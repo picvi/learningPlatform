@@ -1,32 +1,44 @@
 <div class="container row mt-5">
-	<div class="col-lg-9 col-md-10 col-11">
-		<div class="card-deck">
-			<app-board-game-display 
-			*ngFor='let task of past, let idx = index'
-			[path]='task.pic'
-			[ngClass]="{accentCurrentCard: past.indexOf(task) === counter}"
-			class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
-			>
-			</app-board-game-display>
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-2 col-1">
-		<app-dice 
-		(onResult)=getTask($event)
-		></app-dice>
-	</div>
+  <div class="col-lg-9 col-md-10 col-11">
+    <div class="card-deck">
+      <app-board-game-display
+        *ngFor="let task of past; let idx = index"
+        [path]="task.pic"
+        [ngClass]="{ accentCurrentCard: past.indexOf(task) === counter }"
+        class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
+      >
+      </app-board-game-display>
+    </div>
+  </div>
+  <app-dice (onResult)="getTask($event)"></app-dice>
 </div>
 
-<div class="modal fade " id="taskDisplay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<div class="modal-body">
-				<h4 *ngIf="this.counter < this.past.length">{{this.currentTask.question}}</h4>
-				<h4 *ngIf="this.counter === this.past.length - 1">You've finished the game!</h4>
-			</div>
-		</div>
-	</div>
+<div
+  class="modal fade"
+  id="taskDisplay"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+        <h4 *ngIf="this.counter < this.past.length">
+          {{ this.currentTask.question }}
+        </h4>
+        <h4 *ngIf="this.counter === this.past.length - 1">
+          You've finished the game!
+        </h4>
+      </div>
+    </div>
+  </div>
 </div>

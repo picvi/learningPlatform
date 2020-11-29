@@ -14,8 +14,11 @@ import { BoardGameComponent } from './board-game/board-game.component';
 import { UsersDataService } from './users-data.service';
 import { LogInComponent } from './header/log-in/log-in.component';
 import { GamesComponent } from './games/games.component';
+import { CommonModule } from '@angular/common';
+import { MainComponent } from './main/main.component';
 
 const appRoutes: Routes = [
+  { path: '', component: MainComponent },
   { path: 'boardGame', component: BoardGameComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'logIn', component: LogInComponent },
@@ -29,12 +32,15 @@ const appRoutes: Routes = [
     DiceComponent,
     HeaderComponent,
     SignUpComponent,
-    BoardGameComponent
+    LogInComponent,
+    BoardGameComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    CommonModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],

@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+*::before {
+  margin: 0;
+}
+.info {
+  margin-top: 80px;
+  h3 {
+  text-align: center;
+  }
+  #imgCompet {
+    width: 500px;
+    height: auto;
+    border-radius: 30% 70% 43% 57% / 17% 48% 52% 83% ;
+  }
+
+  #imgPlay {
+    width: 500px;
+    height: auto;
+    border-radius: 59% 41% 79% 21% / 52% 59% 41% 48% ;
+  }
+  .card-deck {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .card {
+      width: max-content;
+      padding: 10px;
+      flex: 0 1 300px;
+      border-radius: 18% 82% 24% 76% / 76% 15% 85% 24% ;
+
+      img {
+        overflow: hidden;
+        border-radius: 50% 50% 22% 22% / 49% 49% 29% 29%;
+      }
+      p {
+        text-align-last: center;
+      }
+    }
+  }
+}
