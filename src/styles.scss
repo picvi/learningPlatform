@@ -5,4 +5,18 @@ body {
 .btn {
 	background-color: #d8663d;
 	border-radius: 6px;
+
+	
+}
+.btn:hover {
+	background-color: #d8663d;
+	color: antiquewhite;
+}
+
+h3, h4 {
+	font-family: 'Dosis', sans-serif;
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
 }

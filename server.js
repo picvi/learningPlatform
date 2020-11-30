@@ -64,3 +64,16 @@ app.post('/user', jsonParser, (request, response) => {
     }
   });
 });
+
+app.get('/pastSimple', (request, response) => {
+  console.log(request);
+  let pastSimple = [];
+  fs.readFile('./src/assets/tenses.json', 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      pastSimple = JSON.parse(data).pastSimple;
+      response.send(pastSimple);
+    }
+  });
+});

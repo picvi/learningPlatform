@@ -11,15 +11,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { BoardGameComponent } from './board-game/board-game.component';
-import { UsersDataService } from './users-data.service';
 import { LogInComponent } from './header/log-in/log-in.component';
 import { GamesComponent } from './games/games.component';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
+import { BgGetTensesService } from './bg-get-tenses.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'boardGame', component: BoardGameComponent },
+  { path: 'boardGame/:tense', component: BoardGameComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'logIn', component: LogInComponent },
   { path: 'games', component: GamesComponent }
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UsersDataService],
+  providers: [BgGetTensesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<h4 class="text-monospace"> Log In</h4>
+	<h4> Log In</h4>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="email">
@@ -48,7 +48,7 @@
     [disabled]="form.invalid"
     >Log in</button>
   </form>
-  <h4 class="text-monospace"> Don't have an account?</h4>
+  <h4> Don't have an account?</h4>
   <div class="d-flex justify-content-center">
     <a class="text-monospace" routerLink="/signUp">Sign Up</a>
   </div>

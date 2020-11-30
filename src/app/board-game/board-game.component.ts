@@ -1,31 +1,46 @@
 import { Component } from '@angular/core';
-import { BgPastService } from '../bg-past.service';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { BgGetTensesService } from '../bg-get-tenses.service';
 
 @Component({
   selector: 'app-board-game',
   templateUrl: './board-game.component.html',
-  styleUrls: ['./board-game.component.scss'],
-  providers: [BgPastService]
+  styleUrls: ['./board-game.component.scss']
 })
 export class BoardGameComponent {
-  constructor(private pastTense: BgPastService) {}
-
-  past = this.pastTense.tasks;
+  tense!: any[];
+  private subscription!: Subscription;
+  constructor(
+    private getTenses: BgGetTensesService,
+    private activateRoute: ActivatedRoute
+  ) {
+    this.subscription = activateRoute.params.subscribe(
+      (params) => (this.tense = params['tense'])
+    );
+  }
+  pastSimple = this.getTenses.getPastSimple();
   counter = 0;
-  currentTask = this.past[0];
+  currentTask = this.pastSimple;
 
-  getTask(result: number): void {
+  getDiceResult(result: number): void {
     const id = setInterval(() => {
-      if (this.counter > this.past.length) {
-        console.log('more');
-        this.counter = this.counter - (this.counter - this.past.length);
-      } else {
-        this.counter++;
-      }
+      // if (this.counter > this.pastSimple.length) {
+      //   console.log('more');
+      //   this.counter = this.counter - (this.counter - this.pastSimple.length);
+      // } else {
+      //   this.counter++;
+      // }
+      this.counter++;
     }, 500);
     setTimeout(() => {
       clearInterval(id);
     }, result * 500);
-    this.currentTask = this.past[this.counter + result];
+    this.counter += result;
+    console.log(this.tense);
   }
+
+  // getTask(tense: any[]): void {
+  //   this.currentTask = tense[this.counter];
+  // }
 }
