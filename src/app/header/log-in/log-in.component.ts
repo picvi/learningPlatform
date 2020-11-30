@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegistrationService } from 'src/app/registration.service';
+import { User } from 'src/app/user-class.service';
 
 @Component({
   selector: 'app-log-in',
@@ -10,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LogInComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private http: HttpClient) {}
+  constructor(private registr: RegistrationService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -20,15 +21,10 @@ export class LogInComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const userDTO = {
-      email: this.form.controls.email.value,
-      pass: this.form.controls.password.value
-    };
-    this.http.post('http://localhost:3000/login', userDTO).subscribe((_: any) => {
-      console.log(_);
-    },
-    (err) => {
-      console.log(err);
-    });
+    const userDTO = new User(
+      this.form.controls.email.value,
+      this.form.controls.password.value
+    );
+    this.registr.logIn(userDTO);
   }
 }

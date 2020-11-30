@@ -23,15 +23,17 @@ app.post('/add-user', jsonParser, (request, response) => {
   } else {
     fs.readFile('./src/assets/db.json', 'utf8', (err, data) => {
       if (err) {
-        response.status(500).send(err)
+        response.status(500).send(err);
       } else {
         try {
           const db = JSON.parse(data);
           const users = db.users;
-          const userExists = users.some(user => user.email === requestedUser.email);
+          const userExists = users.some(
+            (user) => user.email === requestedUser.email
+          );
 
           if (userExists) {
-            response.status(400).send('Такой пользователь существует')
+            response.status(400).send('Такой пользователь существует');
           } else {
             users.push(requestedUser);
             json = JSON.stringify(db);
@@ -53,13 +55,13 @@ app.post('/add-user', jsonParser, (request, response) => {
 app.get('/users', (request, response) => {
   fs.readFile('./src/assets/db.json', 'utf8', (err, data) => {
     if (err) {
-      response.status(500).send(err)
+      response.status(500).send(err);
     } else {
       try {
         const db = JSON.parse(data);
         const users = db.users;
         response.send(users);
-      } catch(err) {
+      } catch (err) {
         response.status(500).send(err);
       }
     }
@@ -72,23 +74,31 @@ app.post('/login', jsonParser, (request, response) => {
     if (err) {
       response.status(500).send(err);
     } else {
-     try {
-      const db = JSON.parse(data);
-      const users = db.users;
+      try {
+        const db = JSON.parse(data);
+        const users = db.users;
 
-      if (users.length) {
-       const user = users.find(user => user.email === requestedUser.email && user.pass === requestedUser.pass);
-       if (user) {
-         response.status(200).send(JSON.stringify(user));
-       } else {
-         response.status(400).send('Такого пользователя не существует. Пожауйста проверьте еще раз введенные Вами данные!');
-       }
-      } else {
-        response.status(400).send('Список пользователей пуст');
+        if (users.length) {
+          const user = users.find(
+            (user) =>
+              user.email === requestedUser.email &&
+              user.pass === requestedUser.pass
+          );
+          if (user) {
+            response.status(200).send(JSON.stringify(user));
+          } else {
+            response
+              .status(400)
+              .send(
+                'Такого пользователя не существует. Пожауйста проверьте еще раз введенные Вами данные!'
+              );
+          }
+        } else {
+          response.status(400).send('Список пользователей пуст');
+        }
+      } catch (err) {
+        response.status(500).send(err);
       }
-     } catch(err) {
-      response.status(500).send(err)
-     }
     }
   });
 });

@@ -7,10 +7,12 @@ import { BgGetTensesService } from '../bg-get-tenses.service';
   styleUrls: ['./games.component.scss']
 })
 export class GamesComponent {
-  constructor(private pastSimple: BgGetTensesService) {}
+  constructor(private getTense: BgGetTensesService) {}
+  myTense!: any;
   getPastS(): void {
-    this.pastSimple.getPastSimple().subscribe((tasks) => {
-      console.log(tasks);
+    this.getTense.getPastSimple().subscribe((tense) => {
+      this.myTense = { ...tense };
     });
+    console.log(this.myTense);
   }
 }

@@ -11,7 +11,6 @@ export class BgGetTensesService {
   // eslint-disable-next-line @typescript-eslint/ban-types
   getPastSimple(): Observable<Object> {
     return this.http.get('http://localhost:3000/pastSimple', {
-      observe: 'body',
       responseType: 'json'
     });
   }

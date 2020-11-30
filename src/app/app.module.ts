@@ -9,21 +9,12 @@ import { HeaderComponent } from './header/header.component';
 import { SignUpComponent } from './header/sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule } from '@angular/router';
 import { BoardGameComponent } from './board-game/board-game.component';
 import { LogInComponent } from './header/log-in/log-in.component';
-import { GamesComponent } from './games/games.component';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { BgGetTensesService } from './bg-get-tenses.service';
-
-const appRoutes: Routes = [
-  { path: '', component: MainComponent },
-  { path: 'boardGame/:tense', component: BoardGameComponent },
-  { path: 'signUp', component: SignUpComponent },
-  { path: 'logIn', component: LogInComponent },
-  { path: 'games', component: GamesComponent }
-];
+import { RegistrationService } from './registration.service';
 
 @NgModule({
   declarations: [
@@ -41,10 +32,9 @@ const appRoutes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    HttpClientModule
   ],
-  providers: [BgGetTensesService],
+  providers: [BgGetTensesService, RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

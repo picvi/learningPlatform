@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BgGetTensesService } from '../bg-get-tenses.service';
@@ -9,38 +9,26 @@ import { BgGetTensesService } from '../bg-get-tenses.service';
   styleUrls: ['./board-game.component.scss']
 })
 export class BoardGameComponent {
-  tense!: any[];
-  private subscription!: Subscription;
-  constructor(
-    private getTenses: BgGetTensesService,
-    private activateRoute: ActivatedRoute
-  ) {
-    this.subscription = activateRoute.params.subscribe(
-      (params) => (this.tense = params['tense'])
-    );
-  }
-  pastSimple = this.getTenses.getPastSimple();
+  @Input() tense: any;
   counter = 0;
-  currentTask = this.pastSimple;
+  currentTask = this.tense[0];
 
   getDiceResult(result: number): void {
     const id = setInterval(() => {
-      // if (this.counter > this.pastSimple.length) {
-      //   console.log('more');
-      //   this.counter = this.counter - (this.counter - this.pastSimple.length);
-      // } else {
-      //   this.counter++;
-      // }
-      this.counter++;
+      if (this.counter > this.tense.length) {
+        console.log('more');
+        this.counter = this.counter - (this.counter - this.tense.length);
+      } else {
+        this.counter++;
+      }
     }, 500);
     setTimeout(() => {
       clearInterval(id);
     }, result * 500);
-    this.counter += result;
+    this.currentTask = this.tense[(this.counter += result)];
     console.log(this.tense);
   }
 
   // getTask(tense: any[]): void {
-  //   this.currentTask = tense[this.counter];
   // }
 }
