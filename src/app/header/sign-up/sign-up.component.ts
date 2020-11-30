@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router$: Router) {}
 
   form!: FormGroup;
   users!: any[];
@@ -29,13 +29,14 @@ export class SignUpComponent implements OnInit {
     return null;
   }
 
-  onSubmit(): void {
-    console.log('Submitted form', this.form);
+  signUp(): void {
     const userDTO = {
       name: this.form.controls.userName.value,
       email: this.form.controls.email.value,
       pass: this.form.controls.password.value
     };
-    this.http.post('http://localhost:3000/edit', userDTO).subscribe();
+    this.http.post('http://localhost:3000/add-user', userDTO).subscribe(() => {
+      this.router$.navigate(['/logIn']);
+    });
   }
 }

@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <h4>Sign Up</h4>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h4 class="text-monospace" >Sign Up</h4>
+  <form [formGroup]="form" (ngSubmit)="signUp()">
     <div class="form-group">
       <label for="userName">
         <svg
@@ -126,7 +126,7 @@
       </p>
     </div>
 
-    <button class="btn btn-light" type="submit" [disabled]="form.invalid">
+    <button class="btn btn-light" [disabled]="form.invalid">
       Sign Up
     </button>
   </form>
