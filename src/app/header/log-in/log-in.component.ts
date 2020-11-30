@@ -20,11 +20,15 @@ export class LogInComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Submitted form', this.form);
     const userDTO = {
       email: this.form.controls.email.value,
       pass: this.form.controls.password.value
     };
-    this.http.post('http://localhost:3000/user', userDTO).subscribe();
+    this.http.post('http://localhost:3000/login', userDTO).subscribe((_: any) => {
+      console.log(_);
+    },
+    (err) => {
+      console.log(err);
+    });
   }
 }

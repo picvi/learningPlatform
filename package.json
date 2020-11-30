@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "server": "nodemon server.js --watch",
     "build": "ng build",
     "test": "ng test",
     "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix",
@@ -21,6 +22,7 @@
     "@angular/router": "~11.0.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "nodemon": "^2.0.6",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
