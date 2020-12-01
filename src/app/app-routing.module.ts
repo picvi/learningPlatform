@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BoardGameComponent } from './board-game/board-game.component';
+import { BoardGameComponent } from './games/board-game/board-game.component';
 import { GamesComponent } from './games/games.component';
 import { LogInComponent } from './header/log-in/log-in.component';
 import { SignUpComponent } from './header/sign-up/sign-up.component';

@@ -10,8 +10,8 @@
     <div class="view-second">
       <h4>We have Board Games to master:</h4>
       <div class="d-flex flex-column mt-3">
-        <a class="btn" [routerLink]="['boardGame', 'PastSimple']" [tense]="getPastS()">Past Simple</a>
-        <a class="btn">Present Continuous</a>
+        <a class="btn" (click)="getPastS()">Past Simple</a>
+        <a class="btn" (click)="getPrPerfectPSimple()">Present Perfect and Past Simple</a>
         <a class="btn">Present Perfect</a>
       </div>
     </div>
