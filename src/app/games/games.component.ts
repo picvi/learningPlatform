@@ -8,11 +8,11 @@ import { BgGetTensesService } from '../bg-get-tenses.service';
 })
 export class GamesComponent {
   constructor(private getTense: BgGetTensesService) {}
-  myTense!: any;
+  tense!: any;
   getPastS(): void {
     this.getTense.getPastSimple().subscribe((tense) => {
-      this.myTense = { ...tense };
+      return (this.tense = { ...tense });
     });
-    console.log(this.myTense);
+    console.log(this.tense);
   }
 }
