@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { BgGetTensesService } from '../bg-get-tenses.service';
 
 @Component({
@@ -7,12 +8,12 @@ import { BgGetTensesService } from '../bg-get-tenses.service';
   styleUrls: ['./games.component.scss']
 })
 export class GamesComponent {
-  constructor(private getTense: BgGetTensesService) {}
+  constructor(private getTense: BgGetTensesService, private router: Router) {}
   tense!: any;
   getPastS(): void {
-    this.getTense.getPastSimple().subscribe((tense) => {
-      return (this.tense = { ...tense });
-    });
-    console.log(this.tense);
+    this.router.navigate(['boardGame', 'pastSimple']);
+  }
+  getPrPerfectPSimple(): void {
+    this.router.navigate(['boardGame', 'prPerfectPastSimple']);
   }
 }

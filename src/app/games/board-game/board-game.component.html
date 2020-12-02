@@ -1,0 +1,16 @@
+<div class="container row mt-5">
+  <div class="col-lg-9 col-md-10 col-11">
+    <div class="card-deck">
+      <app-board-game-display
+        *ngFor="let task of tense; let idx = index"
+        [path]="task.pic"
+        [ngClass]="{ accentCurrentCard: tense.indexOf(task) === counter }"
+        class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
+      >
+      </app-board-game-display>
+    </div>
+  </div>
+  <app-dice (onResult)="getDiceResult($event)"></app-dice>
+  <ng-template #taskModal></ng-template>
+</div>
+
