@@ -41,11 +41,11 @@ export class BgGetTensesService {
       pic: 'assets/pics/beach.jpg'
     },
     {
-      question: 'When did you last see a doctor',
+      question: 'When did you last see a doctor?',
       pic: 'assets/pics/doctor.jpeg'
     },
     {
-      question: 'When did you last ride a bicycle',
+      question: 'When did you last ride a bicycle?',
       pic: 'assets/pics/bicycle.jpg'
     },
     {
@@ -99,6 +99,9 @@ export class BgGetTensesService {
 
   prPerfectPastSimple = [
     {
+      pic: 'assets/pics/start.jpg'
+    },
+    {
       question: 'Have you ever eaten strange food?',
       pic: ''
     },
@@ -115,8 +118,55 @@ export class BgGetTensesService {
       pic: ''
     },
     {
-      question: 'When did you last watcha horror movie?',
+      question: 'When did you last watched a horror movie?',
       pic: ''
+    },
+    {
+      question: 'How many times have you visited the capital?',
+      pic: ''
+    },
+    {
+      question: 'Have you ever touched a snake?',
+      pic: ''
+    },
+    {
+      question: 'When was the last time you played a computer game?',
+      pic: ''
+    },
+    {
+      question: 'Did you read a book last month? Did you like it?',
+      pic: ''
+    },
+    {
+      question: 'Where did you go on you last vocation?',
+      pic: ''
+    },
+    {
+      question: 'Have you ever met a famous person?',
+      pic: ''
+    },
+    {
+      question: 'Did you iron yesterday?',
+      pic: ''
+    },
+    {
+      question: 'What countries have you visited?',
+      pic: ''
+    },
+    {
+      question: "When did you last go to the hairdresser's?",
+      pic: ''
+    },
+    {
+      question: 'Have you ever read a book in English?',
+      pic: ''
+    },
+    {
+      question: 'What did you eat 2 hours ago?',
+      pic: ''
+    },
+    {
+      pic: 'assets/pics/finish.jpg'
     }
   ];
 }

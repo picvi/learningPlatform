@@ -52,7 +52,6 @@ export class BoardGameComponent implements OnInit {
     setTimeout(() => {
       clearInterval(id);
       this.currentTask = this.tense[this.counter];
-
       this.modal.clear();
 
       const taskModal = this.resolver.resolveComponentFactory(ModalComponent);
