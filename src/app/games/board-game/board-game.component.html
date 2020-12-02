@@ -11,33 +11,5 @@
     </div>
   </div>
   <app-dice (onResult)="getDiceResult($event)"></app-dice>
-</div>
-<div
-class="modal fade"
-id="taskDisplay"
-tabindex="-1"
-role="dialog"
-aria-labelledby="exampleModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">
-    <button
-    type="button"
-    class="close"
-    data-dismiss="modal"
-    aria-label="Close"
-    >
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <div class="modal-body">
-    <h4 *ngIf="this.counter < this.tense.length">
-      {{ this.currentTask.question }}
-    </h4>
-    <h4 *ngIf="this.counter === this.tense.length - 1">
-      You've finished the game!
-    </h4>
-  </div>
-</div>
-</div>
+  <ng-template #taskModal></ng-template>
 </div>
