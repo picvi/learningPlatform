@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ModalComponent {
   value: any = null;
+  header!: string;
+
+  close(event: any): void {
+    const instance = event.target.closest('APP-MODAL');
+    instance.remove();
+  }
 }

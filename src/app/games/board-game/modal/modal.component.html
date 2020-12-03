@@ -1,27 +1,12 @@
-<div
-  class="modal fade"
-  id="taskDisplay"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <button
-        type="button"
-        class="close"
-        data-dismiss="modal"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <div class="modal-body">
-        <h4>
-          {{ value?.question }}
-        </h4>
-      </div>
+<div>
+  <div class="window">
+    <div class="header">
+      <h2 *ngIf="header">{{ header }}</h2>
+      <button type="button" class="btn close close-window" (click)="close($event)">X</button>
     </div>
+    <hr class="divider" *ngIf="header">
+    <h4>
+      {{ value?.question }}
+    </h4>
   </div>
 </div>
-<p>{{ value?.question }}</p>

@@ -1,8 +1,7 @@
 import {
   Component,
-  ComponentFactory,
   ComponentFactoryResolver,
-  Input,
+  ComponentRef,
   OnInit,
   ViewChild,
   ViewContainerRef
@@ -23,6 +22,7 @@ export class BoardGameComponent implements OnInit {
   tense: any = [];
   counter = 0;
   currentTask: any = [];
+  modalWindow: any = null;
 
   private subscription!: Subscription;
   constructor(
@@ -31,7 +31,7 @@ export class BoardGameComponent implements OnInit {
     private resolver: ComponentFactoryResolver
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscription = this.route.params.subscribe((params) => {
       this.tense = this.getTense[params['tense']];
     });
@@ -52,14 +52,11 @@ export class BoardGameComponent implements OnInit {
     setTimeout(() => {
       clearInterval(id);
       this.currentTask = this.tense[this.counter];
-      this.modal.clear();
 
       const taskModal = this.resolver.resolveComponentFactory(ModalComponent);
-      const taskModalRef = this.modal.createComponent(taskModal);
-
-      (<ModalComponent>taskModalRef.instance).value = {
-        question: this.currentTask.question
-      };
+      const taskModalRef: ComponentRef<ModalComponent> = this.modal.createComponent(taskModal);
+      taskModalRef.instance.header = 'Answer the question';
+      taskModalRef.instance.value = this.currentTask;
     }, result * 500);
   }
 }
