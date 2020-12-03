@@ -103,55 +103,55 @@ export class BgGetTensesService {
     },
     {
       question: 'Have you ever eaten strange food?',
-      pic: ''
+      pic: 'assets/pics/thaiFood.jpg'
     },
     {
       question: "What's the best present you have ever recieved",
-      pic: ''
+      pic: 'assets/pics/bdPresent.jpg'
     },
     {
       question: 'When was the last time you ate pizza?',
-      pic: ''
+      pic: 'assets/pics/pizza.jpg'
     },
     {
       question: 'Have you ever broken a leg?',
-      pic: ''
+      pic: 'assets/pics/brokenLeg.jpg'
     },
     {
-      question: 'When did you last watched a horror movie?',
-      pic: ''
+      question: 'When did you last watch a horror movie?',
+      pic: 'assets/pics/horror.jpg'
     },
     {
       question: 'How many times have you visited the capital?',
-      pic: ''
+      pic: 'assets/pics/capital.jpg'
     },
     {
       question: 'Have you ever touched a snake?',
-      pic: ''
+      pic: 'assets/pics/snake.jpg'
     },
     {
       question: 'When was the last time you played a computer game?',
-      pic: ''
+      pic: 'assets/pics/computerGame.jpg'
     },
     {
       question: 'Did you read a book last month? Did you like it?',
-      pic: ''
+      pic: 'assets/pics/reading.jpg'
     },
     {
-      question: 'Where did you go on you last vocation?',
-      pic: ''
+      question: 'Where did you go on your last vocation?',
+      pic: 'assets/pics/vocation.jpg'
     },
     {
       question: 'Have you ever met a famous person?',
-      pic: ''
+      pic: 'assets/pics/celebrity.jpg'
     },
     {
       question: 'Did you iron yesterday?',
-      pic: ''
+      pic: 'assets/pics/ironing.jpg'
     },
     {
       question: 'What countries have you visited?',
-      pic: ''
+      pic: 'assets/pics/travelling.jpg'
     },
     {
       question: "When did you last go to the hairdresser's?",
@@ -159,11 +159,11 @@ export class BgGetTensesService {
     },
     {
       question: 'Have you ever read a book in English?',
-      pic: ''
+      pic: 'assets/pics/englishBook.jpg'
     },
     {
       question: 'What did you eat 2 hours ago?',
-      pic: ''
+      pic: 'assets/pics/meal.jpg'
     },
     {
       pic: 'assets/pics/finish.jpg'
