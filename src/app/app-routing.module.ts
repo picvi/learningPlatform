@@ -8,10 +8,14 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'boardGame/:tense', component: BoardGameComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'logIn', component: LogInComponent },
-  { path: 'games', component: GamesComponent }
+  { path: 'boardGame/:tense', component: BoardGameComponent },
+  {
+    path: 'games',
+    component: GamesComponent,
+    children: [{ path: 'boardGame/:tense', component: BoardGameComponent }]
+  }
 ];
 
 @NgModule({
