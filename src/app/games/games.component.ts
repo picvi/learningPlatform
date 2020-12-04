@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BgGetTensesService } from '../bg-get-tenses.service';
 
 @Component({
   selector: 'app-games',
@@ -8,7 +7,7 @@ import { BgGetTensesService } from '../bg-get-tenses.service';
   styleUrls: ['./games.component.scss']
 })
 export class GamesComponent {
-  constructor(private getTense: BgGetTensesService, private router: Router) {}
+  constructor(private router: Router) {}
   tense!: any;
   getPastS(): void {
     this.router.navigate(['boardGame', 'pastSimple']);

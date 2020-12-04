@@ -1,5 +1,5 @@
 <div class="container row mt-5">
-  <div class="col-lg-9 col-md-10 col-11">
+  <div class="col-lg-9 col-md-10 col-10">
     <div class="card-deck">
       <app-board-game-display
         *ngFor="let task of tense; let idx = index"
@@ -10,6 +10,8 @@
       </app-board-game-display>
     </div>
   </div>
-  <app-dice (onResult)="getDiceResult($event)"></app-dice>
+  <div class="col-lg-3 col-md-2 col-2">
+    <app-dice (onResult)="getDiceResult($event)"></app-dice>
+  </div>
   <ng-template #taskModal></ng-template>
 </div>

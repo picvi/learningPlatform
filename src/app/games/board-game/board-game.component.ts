@@ -41,22 +41,39 @@ export class BoardGameComponent implements OnInit {
 
   getDiceResult(result: number): void {
     const id = setInterval(() => {
-      if (this.counter > this.tense.length) {
-        console.log('more');
-        this.counter = this.counter - (this.counter - this.tense.length);
-      } else {
-        this.counter++;
-      }
+      this.counter++;
     }, 500);
 
     setTimeout(() => {
       clearInterval(id);
       this.currentTask = this.tense[this.counter];
-
-      const taskModal = this.resolver.resolveComponentFactory(ModalComponent);
-      const taskModalRef: ComponentRef<ModalComponent> = this.modal.createComponent(taskModal);
-      taskModalRef.instance.header = 'Answer the question';
-      taskModalRef.instance.value = this.currentTask;
+      if (this.currentTask.hasOwnProperty('behind')) {
+        const stepsBehind = this.currentTask.behind;
+        this.counter -= stepsBehind;
+        const message = `You have to go ${stepsBehind} steps behind`;
+        this.showModal(message);
+      }
+      if (this.currentTask.hasOwnProperty('ahead')) {
+        const stepsAhead = this.currentTask.ahead;
+        this.counter += stepsAhead;
+        const message = `You have to go ${stepsAhead} steps ahead`;
+        this.showModal(message);
+      }
     }, result * 500);
+    setTimeout(() => {
+      if (this.counter >= this.tense.length) {
+        this.showModal('Congratulations! You have finished the game');
+      } else {
+        this.showModal('Please answer the question', this.currentTask);
+      }
+    }, result * 900);
+  }
+  showModal(header: string, task?: any[]): void {
+    const taskModal = this.resolver.resolveComponentFactory(ModalComponent);
+    const taskModalRef: ComponentRef<ModalComponent> = this.modal.createComponent(
+      taskModal
+    );
+    taskModalRef.instance.header = header;
+    taskModalRef.instance.value = task;
   }
 }

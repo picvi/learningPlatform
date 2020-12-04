@@ -107,7 +107,8 @@ export class BgGetTensesService {
     },
     {
       question: "What's the best present you have ever recieved",
-      pic: 'assets/pics/bdPresent.jpg'
+      pic: 'assets/pics/bdPresent.jpg',
+      behind: 2
     },
     {
       question: 'When was the last time you ate pizza?',
@@ -119,15 +120,18 @@ export class BgGetTensesService {
     },
     {
       question: 'When did you last watch a horror movie?',
-      pic: 'assets/pics/horror.jpg'
+      pic: 'assets/pics/horror.jpg',
+      behind: 1
     },
     {
       question: 'How many times have you visited the capital?',
-      pic: 'assets/pics/capital.jpg'
+      pic: 'assets/pics/capital.jpg',
+      ahead: 2
     },
     {
       question: 'Have you ever touched a snake?',
-      pic: 'assets/pics/snake.jpg'
+      pic: 'assets/pics/snake.jpg',
+      ahead: 1
     },
     {
       question: 'When was the last time you played a computer game?',
@@ -135,11 +139,12 @@ export class BgGetTensesService {
     },
     {
       question: 'Did you read a book last month? Did you like it?',
-      pic: 'assets/pics/reading.jpg'
+      pic: 'assets/pics/reading.jpg',
+      behind: 3
     },
     {
-      question: 'Where did you go on your last vocation?',
-      pic: 'assets/pics/vocation.jpg'
+      question: 'Where did you go on your last vacation?',
+      pic: 'assets/pics/vacation.jpg'
     },
     {
       question: 'Have you ever met a famous person?',
@@ -147,7 +152,8 @@ export class BgGetTensesService {
     },
     {
       question: 'Did you iron yesterday?',
-      pic: 'assets/pics/ironing.jpg'
+      pic: 'assets/pics/ironing.jpg',
+      ahead: 1
     },
     {
       question: 'What countries have you visited?',
@@ -155,7 +161,8 @@ export class BgGetTensesService {
     },
     {
       question: "When did you last go to the hairdresser's?",
-      pic: ''
+      pic: '',
+      ahead: 1
     },
     {
       question: 'Have you ever read a book in English?',
