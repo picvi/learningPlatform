@@ -10,11 +10,12 @@ const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'logIn', component: LogInComponent },
-  { path: 'boardGame/:tense', component: BoardGameComponent },
   {
     path: 'games',
-    component: GamesComponent,
-    children: [{ path: 'boardGame/:tense', component: BoardGameComponent }]
+    children: [
+      { path: '', component: GamesComponent },
+      { path: 'boardGame/:tense', component: BoardGameComponent }
+    ]
   }
 ];
 

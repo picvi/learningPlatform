@@ -4,14 +4,23 @@
       <app-board-game-display
         *ngFor="let task of tense; let idx = index"
         [path]="task.pic"
-        [ngClass]="{ accentCurrentCard: tense.indexOf(task) === counter }"
+        [ngClass]="{ player1Card: tense.indexOf(task) === counterPl1 }"
+        [ngClass]="{ player2Card: tense.indexOf(task) === counterPl2 }"
         class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
       >
       </app-board-game-display>
     </div>
   </div>
-  <div class="col-lg-3 col-md-2 col-2">
-    <app-dice (onResult)="getDiceResult($event)"></app-dice>
+  <div class="col-lg-3 col-md-2 col-2 fixed-top">
+    <div class="d-block mx-auto playerCard">
+      <h3> Player 1</h3>
+      <app-dice (onResult)="dicePlayer1($event)"></app-dice>
+    </div>
+    <div class="d-block mx-auto playerCard">
+      <h3> Player 2</h3>
+      <app-dice (onResult)="dicePlayer2($event)"></app-dice>
+    </div>
   </div>
   <ng-template #taskModal></ng-template>
+  <ng-template #confirm></ng-template>
 </div>

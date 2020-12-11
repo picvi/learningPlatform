@@ -1,4 +1,27 @@
-.accentCurrentCard{
+.player1Card{
   background-color: rgba(250, 235, 215, 0.644);
   border-radius: 5px;
+}
+
+.player2Card {
+  background-color: #bb8979c0;
+  border-radius: 5px;
+}
+
+.playerCard {
+  height: 150px;
+  background-color: rgba(250, 235, 215, 0.616);
+  border-radius: 15px;
+  box-shadow:  0.2em 0.2em 0.8em rgba(134, 118, 97, 0.637);
+  margin-bottom: 40px;
+  padding-top: 5px;
+}
+
+.fixed-top {
+  top: 30%;
+  left: 70%
+}
+
+h3 {
+  text-align: center;
 }
