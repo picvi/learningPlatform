@@ -6,6 +6,7 @@
         [path]="task.pic"
         [ngClass]="{ player1Card: tense.indexOf(task) === counterPl1 }"
         [ngClass]="{ player2Card: tense.indexOf(task) === counterPl2 }"
+        [ngClass]="{ commonCard: tense.indexOf(task) === counterPl1 && tense.indexOf(task) === counterPl2 }"
         class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
       >
       </app-board-game-display>
@@ -14,10 +15,12 @@
   <div class="col-lg-3 col-md-2 col-2 fixed-top">
     <div class="d-block mx-auto playerCard">
       <h3> Player 1</h3>
+      <p *ngIf="turn1"> Now it's your turn! </p>
       <app-dice (onResult)="dicePlayer1($event)"></app-dice>
     </div>
     <div class="d-block mx-auto playerCard">
       <h3> Player 2</h3>
+      <p *ngIf="turn2"> Now it's your turn! </p>
       <app-dice (onResult)="dicePlayer2($event)"></app-dice>
     </div>
   </div>

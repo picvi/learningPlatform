@@ -26,6 +26,8 @@ export class BoardGameComponent implements OnInit {
   taskPlayer1: any = [];
   taskPlayer2: any = [];
   modalWindow: any = null;
+  turn1 = false;
+  turn2 = false;
 
   private subscription!: Subscription;
   constructor(
@@ -58,6 +60,8 @@ export class BoardGameComponent implements OnInit {
 
     promise.then((result) => {
       this.showModal(result, this.counterPl1, this.taskPlayer1, this.tense);
+      this.turn1 = false;
+      this.turn2 = true;
     });
   }
 
@@ -76,6 +80,8 @@ export class BoardGameComponent implements OnInit {
 
     promise.then((result) => {
       this.showModal(result, this.counterPl2, this.taskPlayer2, this.tense);
+      this.turn2 = false;
+      this.turn1 = true;
     });
   }
 

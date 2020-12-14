@@ -8,20 +8,30 @@
   border-radius: 5px;
 }
 
+.commonCard{
+  background-color: blanchedalmond;
+  border-radius: 5px;
+}
+
 .playerCard {
-  height: 150px;
+  height: 180px;
   background-color: rgba(250, 235, 215, 0.616);
   border-radius: 15px;
   box-shadow:  0.2em 0.2em 0.8em rgba(134, 118, 97, 0.637);
   margin-bottom: 40px;
   padding-top: 5px;
+
+  p {
+    font-size: 12px;
+  }
+
+  h3, p {
+    text-align: center;
+  }
 }
 
 .fixed-top {
-  top: 30%;
+  top: 25%;
   left: 70%
 }
 
-h3 {
-  text-align: center;
-}

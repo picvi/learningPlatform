@@ -34,6 +34,7 @@ export class ModalComponent {
       setTimeout(() => {
         clearInterval(id);
         playerTask = tense[playerCounter];
+        this.showTask(playerTask.question);
       }, task.ahead * 500);
     } else if (task.hasOwnProperty('behind')) {
       this.toggler = true;
@@ -47,6 +48,7 @@ export class ModalComponent {
       setTimeout(() => {
         clearInterval(id);
         playerTask = tense[playerCounter];
+        this.showTask(playerTask);
       }, task.behind * 500);
     } else {
       this.showTask(task);
@@ -54,7 +56,6 @@ export class ModalComponent {
   }
 
   showTask(task: any = []): void {
-    console.log(task);
     this.header = 'Please answer the question';
     this.value = task?.question;
   }
