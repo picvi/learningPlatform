@@ -1,12 +1,13 @@
 <div>
   <div class="window">
     <div class="header">
-      <h2 *ngIf="header">{{ header }}</h2>
+      <h4 *ngIf="header">{{ header }}</h4>
       <button type="button" class="btn close close-window" (click)="close($event)">X</button>
     </div>
     <hr class="divider" *ngIf="header">
-    <h4>
-      {{ value?.question }}
-    </h4>
+    <h3>
+      {{ value }}
+    </h3>
+    <button class="confirm-btn btn d-block mx-auto mt-3" *ngIf="toggler" (click)="close($event)">Okay</button>
   </div>
 </div>

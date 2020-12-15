@@ -18,11 +18,16 @@ import { ModalComponent } from './modal/modal.component';
 })
 export class BoardGameComponent implements OnInit {
   @ViewChild('taskModal', { read: ViewContainerRef }) modal: any;
+  @ViewChild('confirm', { read: ViewContainerRef }) confirm: any;
 
   tense: any = [];
-  counter = 0;
-  currentTask: any = [];
+  counterPl1 = 0;
+  counterPl2 = 0;
+  taskPlayer1: any = [];
+  taskPlayer2: any = [];
   modalWindow: any = null;
+  turn1 = false;
+  turn2 = false;
 
   private subscription!: Subscription;
   constructor(
@@ -36,44 +41,60 @@ export class BoardGameComponent implements OnInit {
       this.tense = this.getTense[params['tense']];
     });
 
-    this.currentTask = this.tense[0];
+    this.taskPlayer1 = this.tense[0];
+    this.taskPlayer2 = this.tense[0];
   }
 
-  getDiceResult(result: number): void {
-    const id = setInterval(() => {
-      this.counter++;
-    }, 500);
+  dicePlayer1(result: number): void {
+    const promise = new Promise((resolve) => {
+      const id = setInterval(() => {
+        this.counterPl1++;
+      }, 500);
 
-    setTimeout(() => {
-      clearInterval(id);
-      this.currentTask = this.tense[this.counter];
-      if (this.currentTask.hasOwnProperty('behind')) {
-        const stepsBehind = this.currentTask.behind;
-        this.counter -= stepsBehind;
-        const message = `You have to go ${stepsBehind} steps behind`;
-        this.showModal(message);
-      }
-      if (this.currentTask.hasOwnProperty('ahead')) {
-        const stepsAhead = this.currentTask.ahead;
-        this.counter += stepsAhead;
-        const message = `You have to go ${stepsAhead} steps ahead`;
-        this.showModal(message);
-      }
-    }, result * 500);
-    setTimeout(() => {
-      if (this.counter >= this.tense.length) {
-        this.showModal('Congratulations! You have finished the game');
-      } else {
-        this.showModal('Please answer the question', this.currentTask);
-      }
-    }, result * 900);
+      setTimeout(() => {
+        clearInterval(id);
+        this.taskPlayer1 = this.tense[this.counterPl1];
+        return resolve(this.taskPlayer1);
+      }, result * 500);
+    });
+
+    promise.then((result) => {
+      this.showModal(result, this.counterPl1, this.taskPlayer1, this.tense);
+      this.turn1 = false;
+      this.turn2 = true;
+    });
   }
-  showModal(header: string, task?: any[]): void {
+
+  dicePlayer2(result: number): void {
+    const promise = new Promise((resolve) => {
+      const id = setInterval(() => {
+        this.counterPl2++;
+      }, 500);
+
+      setTimeout(() => {
+        clearInterval(id);
+        this.taskPlayer2 = this.tense[this.counterPl2];
+        return resolve(this.taskPlayer2);
+      }, result * 500);
+    });
+
+    promise.then((result) => {
+      this.showModal(result, this.counterPl2, this.taskPlayer2, this.tense);
+      this.turn2 = false;
+      this.turn1 = true;
+    });
+  }
+
+  showModal(
+    task: any = [],
+    playerCounter: number,
+    playerTask: any = [],
+    tense: []
+  ): void {
     const taskModal = this.resolver.resolveComponentFactory(ModalComponent);
     const taskModalRef: ComponentRef<ModalComponent> = this.modal.createComponent(
       taskModal
     );
-    taskModalRef.instance.header = header;
-    taskModalRef.instance.value = task;
+    taskModalRef.instance.getDirection(task, playerCounter, playerTask, tense);
   }
 }
