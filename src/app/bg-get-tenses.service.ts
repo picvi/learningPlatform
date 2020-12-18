@@ -96,8 +96,7 @@ export class BgGetTensesService {
     },
     {
       question: "What's the best present you have ever recieved",
-      pic: 'assets/pics/bdPresent.jpg',
-      behind: 2
+      pic: 'assets/pics/bdPresent.jpg'
     },
     {
       question: 'When was the last time you ate pizza?',
