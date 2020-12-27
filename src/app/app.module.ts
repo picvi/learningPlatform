@@ -14,6 +14,7 @@ import { MainComponent } from './main/main.component';
 import { BgGetTensesService } from './bg-get-tenses.service';
 import { RegistrationService } from './registration.service';
 import { from } from 'rxjs';
+import { HideOnScrollDirective } from './hide-on-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { from } from 'rxjs';
     HeaderComponent,
     SignUpComponent,
     LogInComponent,
-    MainComponent
+    MainComponent,
+    HideOnScrollDirective
   ],
   imports: [
     BrowserModule,
