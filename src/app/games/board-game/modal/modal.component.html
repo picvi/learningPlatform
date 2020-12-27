@@ -2,12 +2,24 @@
   <div class="window">
     <div class="header">
       <h4 *ngIf="header">{{ header }}</h4>
-      <button type="button" class="btn close close-window" (click)="close($event)">X</button>
+      <button
+        type="button"
+        class="btn close close-window"
+        (click)="close($event)"
+      >
+        X
+      </button>
     </div>
-    <hr class="divider" *ngIf="header">
+    <hr class="divider" *ngIf="header" />
     <h3>
       {{ value }}
     </h3>
-    <button class="confirm-btn btn d-block mx-auto mt-3" *ngIf="toggler" (click)="close($event)">Okay</button>
+    <button
+      *ngIf="confirmation"
+      class="confirm-btn btn d-block mx-auto mt-3"
+      (click)="close($event)"
+    >
+      Okay
+    </button>
   </div>
 </div>

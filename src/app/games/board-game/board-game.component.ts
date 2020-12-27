@@ -1,7 +1,6 @@
 import {
   Component,
   ComponentFactoryResolver,
-  ComponentRef,
   OnInit,
   ViewChild,
   ViewContainerRef
@@ -9,31 +8,33 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BgGetTensesService } from 'src/app/bg-get-tenses.service';
+import { TaskModel } from 'src/app/task-model';
 import { ModalComponent } from './modal/modal.component';
+import { ModalService } from './modal/service/modal.service';
 
 @Component({
   selector: 'app-board-game',
   templateUrl: './board-game.component.html',
-  styleUrls: ['./board-game.component.scss']
+  styleUrls: ['./board-game.component.scss'],
+  providers: [ModalService]
 })
 export class BoardGameComponent implements OnInit {
   @ViewChild('taskModal', { read: ViewContainerRef }) modal: any;
-  @ViewChild('confirm', { read: ViewContainerRef }) confirm: any;
-
   tense: any = [];
   counterPl1 = 0;
   counterPl2 = 0;
-  taskPlayer1: any = [];
-  taskPlayer2: any = [];
+  taskPlayer1!: TaskModel;
+  taskPlayer2!: TaskModel;
   modalWindow: any = null;
-  turn1 = false;
+  turn1 = true;
   turn2 = false;
+  confirmation = false;
 
   private subscription!: Subscription;
   constructor(
     private route: ActivatedRoute,
     private getTense: BgGetTensesService,
-    private resolver: ComponentFactoryResolver
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -45,56 +46,70 @@ export class BoardGameComponent implements OnInit {
     this.taskPlayer2 = this.tense[0];
   }
 
-  dicePlayer1(result: number): void {
-    const promise = new Promise((resolve) => {
-      const id = setInterval(() => {
-        this.counterPl1++;
-      }, 500);
+  dicePlayer(result: number, counter: keyof BoardGameComponent): void {
+    const id = setInterval(() => {
+      this[counter]++;
+    }, 500);
 
-      setTimeout(() => {
-        clearInterval(id);
-        this.taskPlayer1 = this.tense[this.counterPl1];
-        return resolve(this.taskPlayer1);
-      }, result * 500);
-    });
-
-    promise.then((result) => {
-      this.showModal(result, this.counterPl1, this.taskPlayer1, this.tense);
-      this.turn1 = false;
-      this.turn2 = true;
-    });
+    setTimeout(() => {
+      clearInterval(id);
+      this.getDirection(this.tense[this[counter]], this[counter]);
+      this.turn1 = !this.turn1;
+      this.turn2 = !this.turn2;
+    }, result * 500);
   }
 
-  dicePlayer2(result: number): void {
-    const promise = new Promise((resolve) => {
-      const id = setInterval(() => {
-        this.counterPl2++;
-      }, 500);
-
-      setTimeout(() => {
-        clearInterval(id);
-        this.taskPlayer2 = this.tense[this.counterPl2];
-        return resolve(this.taskPlayer2);
-      }, result * 500);
-    });
-
-    promise.then((result) => {
-      this.showModal(result, this.counterPl2, this.taskPlayer2, this.tense);
-      this.turn2 = false;
-      this.turn1 = true;
-    });
+  getDirection(task: TaskModel, playerCounter: any): void {
+    let step: string;
+    if (task.hasOwnProperty('movement')) {
+      const stepAmount = task.movement.step;
+      step = stepAmount === 1 ? 'step' : 'steps';
+      const modal = this.showModal(
+        'Confirm',
+        `You have to go ${stepAmount} ${step} ${task?.movement?.direction}`,
+        true
+      );
+      modal.onClose.subscribe(() => {
+        let id: any;
+        if (task?.movement?.direction === 'ahead') {
+          id = setInterval(() => {
+            console.log(playerCounter);
+            playerCounter++;
+          }, 500);
+        } else {
+          id = setInterval(() => {
+            console.log(playerCounter);
+            playerCounter--;
+          }, 500);
+        }
+        setTimeout(() => {
+          clearInterval(id);
+          this.showModal(
+            'Please answer the question',
+            this.tense[playerCounter].question,
+            false
+          );
+        }, stepAmount * 500);
+      });
+    } else {
+      this.showModal(
+        'Please answer the question',
+        this.tense[playerCounter].question,
+        false
+      );
+    }
   }
 
   showModal(
-    task: any = [],
-    playerCounter: number,
-    playerTask: any = [],
-    tense: []
-  ): void {
-    const taskModal = this.resolver.resolveComponentFactory(ModalComponent);
-    const taskModalRef: ComponentRef<ModalComponent> = this.modal.createComponent(
-      taskModal
-    );
-    taskModalRef.instance.getDirection(task, playerCounter, playerTask, tense);
+    header: string,
+    value: string | TaskModel,
+    isTrue: boolean
+  ): ModalComponent {
+    const taskModal = this.modalService.create(this.modal);
+
+    taskModal.header = header;
+    taskModal.value = value;
+    taskModal.confirmation = isTrue;
+    return taskModal;
   }
 }
