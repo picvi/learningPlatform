@@ -4,10 +4,16 @@
       <app-board-game-display
         *ngFor="let task of tense; let idx = index"
         [path]="task.pic"
-        [ngClass]="{ 
-          player1Card: tense.indexOf(task) === counterPl1 && tense.indexOf(task) !== counterPl2,
-          player2Card: tense.indexOf(task) === counterPl2 && tense.indexOf(task) !== counterPl1,
-          commonCard: tense.indexOf(task) === counterPl1 && tense.indexOf(task) === counterPl2 
+        [ngClass]="{
+          player1Card:
+            tense.indexOf(task) === counterPl1 &&
+            tense.indexOf(task) !== counterPl2,
+          player2Card:
+            tense.indexOf(task) === counterPl2 &&
+            tense.indexOf(task) !== counterPl1,
+          commonCard:
+            tense.indexOf(task) === counterPl1 &&
+            tense.indexOf(task) === counterPl2
         }"
         class="col-sm-6 col-md-6 col-lg-4 col-xl-3 align-self-stretch"
       >
@@ -16,18 +22,17 @@
   </div>
   <div class="col-lg-3 col-md-2 col-2 fixed-top">
     <div class="d-block mx-auto playerCard">
-      <h5 *ngIf="counterPl1 >= tense.length"> You've finished the game!</h5>
-      <h3> Player 1</h3>
-      <p *ngIf="turn1"> Now it's your turn! </p>
-      <app-dice (onResult)="dicePlayer1($event)"></app-dice>
+      <h5 *ngIf="counterPl1 >= tense.length">You've finished the game!</h5>
+      <h3>Player 1</h3>
+      <p *ngIf="turn1">Your turn!</p>
+      <app-dice (onResult)="dicePlayer($event, 'counterPl1')" [turn]="!turn1"></app-dice>
     </div>
     <div class="d-block mx-auto playerCard">
-      <h5 *ngIf="counterPl2 >= tense.length"> You've finished the game!</h5>
-      <h3> Player 2</h3>
-      <p *ngIf="turn2"> Now it's your turn! </p>
-      <app-dice (onResult)="dicePlayer2($event)"></app-dice>
+      <h5 *ngIf="counterPl2 >= tense.length">You've finished the game!</h5>
+      <h3>Player 2</h3>
+      <p *ngIf="turn2">Your turn!</p>
+      <app-dice (onResult)="dicePlayer($event, 'counterPl2')" [turn]="!turn2"></app-dice>
     </div>
   </div>
   <ng-template #taskModal></ng-template>
-  <ng-template #confirm></ng-template>
 </div>

@@ -109,17 +109,22 @@ export class BgGetTensesService {
     {
       question: 'When did you last watch a horror movie?',
       pic: 'assets/pics/horror.jpg',
-      behind: 1
+      movement: {
+        direction: 'behind',
+        step: 2
+      }
     },
     {
       question: 'How many times have you visited the capital?',
-      pic: 'assets/pics/capital.jpg',
-      ahead: 2
+      pic: 'assets/pics/capital.jpg'
     },
     {
       question: 'Have you ever touched a snake?',
       pic: 'assets/pics/snake.jpg',
-      ahead: 1
+      movement: {
+        direction: 'ahead',
+        step: 2
+      }
     },
     {
       question: 'When was the last time you played a computer game?',
@@ -127,12 +132,15 @@ export class BgGetTensesService {
     },
     {
       question: 'Did you read a book last month? Did you like it?',
-      pic: 'assets/pics/reading.jpg',
-      behind: 3
+      pic: 'assets/pics/reading.jpg'
     },
     {
       question: 'Where did you go on your last vacation?',
-      pic: 'assets/pics/vacation.jpg'
+      pic: 'assets/pics/vacation.jpg',
+      movement: {
+        direction: 'behind',
+        step: 2
+      }
     },
     {
       question: 'Have you ever met a famous person?',
@@ -140,17 +148,19 @@ export class BgGetTensesService {
     },
     {
       question: 'Did you iron yesterday?',
-      pic: 'assets/pics/ironing.jpg',
-      ahead: 1
+      pic: 'assets/pics/ironing.jpg'
     },
     {
       question: 'What countries have you visited?',
-      pic: 'assets/pics/travelling.jpg'
+      pic: 'assets/pics/travelling.jpg',
+      movement: {
+        direction: 'ahead',
+        step: 1
+      }
     },
     {
       question: "When did you last go to the hairdresser's?",
-      pic: 'assets/pics/hairdresser.jpg',
-      ahead: 1
+      pic: 'assets/pics/hairdresser.jpg'
     },
     {
       question: 'Have you ever read a book in English?',
@@ -158,7 +168,11 @@ export class BgGetTensesService {
     },
     {
       question: 'What did you eat 2 hours ago?',
-      pic: 'assets/pics/meal.jpg'
+      pic: 'assets/pics/meal.jpg',
+      movement: {
+        direction: 'behind',
+        step: 2
+      }
     },
     {
       pic: 'assets/pics/finish.jpg'

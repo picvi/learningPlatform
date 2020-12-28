@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dice',
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./dice.component.scss']
 })
 export class DiceComponent {
+  @Input() turn!: boolean;
   @Output() onResult = new EventEmitter();
   diceResult!: number;
 
