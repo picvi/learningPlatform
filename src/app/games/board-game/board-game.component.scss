@@ -1,15 +1,15 @@
-.player1Card{
+.player1Card {
   background-color: #e6a57f;
   border-radius: 5px;
 }
 
 .player2Card {
-  background-color: #C7C097;
+  background-color: #c7c097;
   border-radius: 5px;
 }
 
-.commonCard{
-  background: linear-gradient(45deg, #e6a57f, #C7C097);
+.commonCard {
+  background: linear-gradient(45deg, #e6a57f, #c7c097);
   border-radius: 5px;
 }
 
@@ -17,7 +17,7 @@
   height: 180px;
   background-color: rgba(250, 235, 215, 0.616);
   border-radius: 15px;
-  box-shadow:  0.2em 0.2em 0.8em rgba(134, 118, 97, 0.637);
+  box-shadow: 0.2em 0.2em 0.8em rgba(134, 118, 97, 0.637);
   margin-bottom: 40px;
   padding-top: 5px;
 
@@ -25,13 +25,14 @@
     font-size: 12px;
   }
 
-  h3, h5, p {
+  h3,
+  h5,
+  p {
     text-align: center;
   }
 }
 
 .fixed-top {
   top: 25%;
-  left: 70%
+  left: 70%;
 }
-

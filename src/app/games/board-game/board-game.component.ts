@@ -41,61 +41,66 @@ export class BoardGameComponent implements OnInit {
   }
 
   dicePlayer(result: number, counter: keyof BoardGameComponent): void {
-    this.turn1 = !this.turn1;
-    this.turn2 = !this.turn2;
+    counter === 'counterPl1'
+      ? (this.turn1 = !this.turn1)
+      : (this.turn2 = !this.turn2);
     const id = setInterval(() => {
       this[counter]++;
     }, 500);
 
     setTimeout(() => {
       clearInterval(id);
-      if (this[counter] >= this.tense.length) {
+
+      this.getDirection(this.tense[this[counter]], counter);
+      if (this[counter] >= this.tense.length - 1) {
         this.turn1 = false;
         this.turn2 = false;
+      } else {
+        counter === 'counterPl1'
+          ? (this.turn2 = !this.turn2)
+          : (this.turn1 = !this.turn1);
       }
-      this.getDirection(this.tense[this[counter]], counter);
     }, result * 500);
   }
 
   getDirection(task: TaskModel, playerCounter: keyof BoardGameComponent): void {
     let step: string;
-    if (task <= this.tense.length) {
-      if (task?.hasOwnProperty('movement')) {
-        const stepAmount = task.movement.step;
-        step = stepAmount === 1 ? 'step' : 'steps';
-        const modal = this.showModal(
-          'Confirm',
-          `You have to go ${stepAmount} ${step} ${task?.movement?.direction}`,
-          true
-        );
-        modal.onClose.subscribe(() => {
-          let id: any;
-          if (task?.movement?.direction === 'ahead') {
-            id = setInterval(() => {
-              this[playerCounter]++;
-            }, 500);
-          } else {
-            id = setInterval(() => {
-              this[playerCounter]--;
-            }, 500);
-          }
-          setTimeout(() => {
-            clearInterval(id);
-            this.showModal(
-              'Please answer the question',
-              this.tense[this[playerCounter]]?.question,
-              false
-            );
-          }, stepAmount * 500);
-        });
-      } else {
-        this.showModal(
-          'Please answer the question',
-          this.tense[this[playerCounter]]?.question,
-          false
-        );
-      }
-  
+    if (task?.hasOwnProperty('movement')) {
+      const stepAmount = task.movement.step;
+      step = stepAmount === 1 ? 'step' : 'steps';
+      const modal = this.showModal(
+        'Confirm',
+        `You have to go ${stepAmount} ${step} ${task?.movement?.direction}`,
+        true
+      );
+      modal.onClose.subscribe(() => {
+        let id: any;
+        if (task?.movement?.direction === 'ahead') {
+          id = setInterval(() => {
+            this[playerCounter]++;
+          }, 500);
+        } else {
+          id = setInterval(() => {
+            this[playerCounter]--;
+          }, 500);
+        }
+        setTimeout(() => {
+          clearInterval(id);
+          this.showModal(
+            'Please answer the question',
+            this.tense[this[playerCounter]]?.question,
+            false
+          );
+        }, stepAmount * 500);
+      });
+    } else {
+      this[playerCounter] >= this.tense.length - 1
+        ? this.showModal('Congratulations!', 'You win', false)
+        : this.showModal(
+            'Please answer the question',
+            this.tense[this[playerCounter]]?.question,
+            false
+          );
     }
   }
 
