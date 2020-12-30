@@ -1,10 +1,4 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  OnInit,
-  ViewChild,
-  ViewContainerRef
-} from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BgGetTensesService } from 'src/app/bg-get-tenses.service';
@@ -47,21 +41,31 @@ export class BoardGameComponent implements OnInit {
   }
 
   dicePlayer(result: number, counter: keyof BoardGameComponent): void {
+    counter === 'counterPl1'
+      ? (this.turn1 = !this.turn1)
+      : (this.turn2 = !this.turn2);
     const id = setInterval(() => {
       this[counter]++;
     }, 500);
 
     setTimeout(() => {
       clearInterval(id);
-      this.getDirection(this.tense[this[counter]], this[counter]);
-      this.turn1 = !this.turn1;
-      this.turn2 = !this.turn2;
+
+      this.getDirection(this.tense[this[counter]], counter);
+      if (this[counter] >= this.tense.length - 1) {
+        this.turn1 = false;
+        this.turn2 = false;
+      } else {
+        counter === 'counterPl1'
+          ? (this.turn2 = !this.turn2)
+          : (this.turn1 = !this.turn1);
+      }
     }, result * 500);
   }
 
-  getDirection(task: TaskModel, playerCounter: any): void {
+  getDirection(task: TaskModel, playerCounter: keyof BoardGameComponent): void {
     let step: string;
-    if (task.hasOwnProperty('movement')) {
+    if (task?.hasOwnProperty('movement')) {
       const stepAmount = task.movement.step;
       step = stepAmount === 1 ? 'step' : 'steps';
       const modal = this.showModal(
@@ -73,30 +77,30 @@ export class BoardGameComponent implements OnInit {
         let id: any;
         if (task?.movement?.direction === 'ahead') {
           id = setInterval(() => {
-            console.log(playerCounter);
-            playerCounter++;
+            this[playerCounter]++;
           }, 500);
         } else {
           id = setInterval(() => {
-            console.log(playerCounter);
-            playerCounter--;
+            this[playerCounter]--;
           }, 500);
         }
         setTimeout(() => {
           clearInterval(id);
           this.showModal(
             'Please answer the question',
-            this.tense[playerCounter].question,
+            this.tense[this[playerCounter]]?.question,
             false
           );
         }, stepAmount * 500);
       });
     } else {
-      this.showModal(
-        'Please answer the question',
-        this.tense[playerCounter].question,
-        false
-      );
+      this[playerCounter] >= this.tense.length - 1
+        ? this.showModal('Congratulations!', 'You win', false)
+        : this.showModal(
+            'Please answer the question',
+            this.tense[this[playerCounter]]?.question,
+            false
+          );
     }
   }
 

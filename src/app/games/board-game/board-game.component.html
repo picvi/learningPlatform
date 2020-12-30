@@ -22,16 +22,22 @@
   </div>
   <div class="col-lg-3 col-md-2 col-2 fixed-top">
     <div class="d-block mx-auto playerCard">
-      <h5 *ngIf="counterPl1 >= tense.length">You've finished the game!</h5>
+      <h5 *ngIf="counterPl1 >= tense.length - 1">You've finished the game!</h5>
       <h3>Player 1</h3>
       <p *ngIf="turn1">Your turn!</p>
-      <app-dice (onResult)="dicePlayer($event, 'counterPl1')" [turn]="!turn1"></app-dice>
+      <app-dice
+        (onResult)="dicePlayer($event, 'counterPl1')"
+        [turn]="!turn1"
+      ></app-dice>
     </div>
     <div class="d-block mx-auto playerCard">
-      <h5 *ngIf="counterPl2 >= tense.length">You've finished the game!</h5>
+      <h5 *ngIf="counterPl2 >= tense.length - 1">You've finished the game!</h5>
       <h3>Player 2</h3>
       <p *ngIf="turn2">Your turn!</p>
-      <app-dice (onResult)="dicePlayer($event, 'counterPl2')" [turn]="!turn2"></app-dice>
+      <app-dice
+        (onResult)="dicePlayer($event, 'counterPl2')"
+        [turn]="!turn2"
+      ></app-dice>
     </div>
   </div>
   <ng-template #taskModal></ng-template>
