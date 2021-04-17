@@ -1,0 +1,21 @@
+<div *ngIf="!gameIsStarted">
+  <div class="teamInputs">
+		<mat-form-field>
+			<mat-label>Enter Team name</mat-label>
+			<input matInput type="text" [(ngModel)]="firstTeamName">
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Enter Team name</mat-label>
+			<input matInput type="text" [(ngModel)]="secondTeamName">
+		</mat-form-field>
+	</div>
+	<div class="startButton" (click)="start()">
+		<button 
+			[disabled]="!(firstTeamName && secondTeamName)" 
+			mat-flat-button 
+			color="primary">
+			Start the game
+		</button>
+	</div>
+</div>
+<app-own-game-playground *ngIf="gameIsStarted"></app-own-game-playground>

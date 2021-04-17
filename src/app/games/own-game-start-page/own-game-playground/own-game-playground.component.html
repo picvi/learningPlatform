@@ -1,0 +1,20 @@
+<div class="container">
+	<div *ngFor="let item of questions" >
+		<div *ngIf="!isCategoryChosen">
+			<app-category-card [category]="item.category" (onCategoryChange)="chooseCategory($event)"></app-category-card>
+		</div>
+	</div>
+	<div *ngIf="isCategoryChosen" class="container" style="flex-direction: column;">
+		<div class="container">
+			<app-category-question *ngFor="let question of currentCategory?.questionsList" [question]="question"></app-category-question>
+		</div>
+		<button
+			[disabled]="svc.isAllQuestionsChecked()"
+			mat-flat-button 
+			color="primary"
+			(click)="goBack()">
+			Go Back
+		</button>
+	</div>
+</div>
+

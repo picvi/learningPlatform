@@ -1,13 +1,15 @@
-body {
-  background:#E4C2A8;
+html, body { height: 100%; }
+body { 
+	margin: 0; 
+	font-family: Roboto, "Helvetica Neue", sans-serif; 
+	background:#f3e3d9;
 }
 
 .btn {
 	background-color: #d8663d;
 	border-radius: 6px;
-
-	
 }
+
 .btn:hover {
 	background-color: #d8663d;
 	color: antiquewhite;

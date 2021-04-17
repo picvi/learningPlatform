@@ -1,4 +1,9 @@
-p {
-  font-size: 3rem;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+div {
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-top: 1rem;
+    font-size: 3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
 }
