@@ -1,0 +1,24 @@
+:host {
+	margin-top: 10rem;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+
+	.teamInputs {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: flex-start;
+
+		mat-form-field {
+			margin: 0 5rem 0 5rem;
+		}
+	}
+
+	.startButton {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 8rem;
+	}
+}

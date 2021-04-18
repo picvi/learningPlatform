@@ -1,0 +1,26 @@
+.container {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	width: 35rem;
+
+	h2 {
+		text-align: center;
+	}
+
+	.buttonsDisplay {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		width: 100%;
+
+		button {
+			border-radius: 50%;
+			border: none;
+			height: 2.5rem;
+			width: 2.5rem;
+		}
+	}
+}

@@ -6,6 +6,14 @@ import { BoardGameDisplayComponent } from './board-game/board-game-display/board
 import { DiceComponent } from './board-game/dice/dice.component';
 import { GamesComponent } from './games.component';
 import { GamesRoutingModule } from './games-routing.module';
+import { OwnGameStartPageComponent } from './own-game-start-page/own-game-start-page.component';
+import { OwnGamePlaygroundComponent } from './own-game-start-page/own-game-playground/own-game-playground.component';
+import { CategoryCardComponent } from './own-game-start-page/own-game-playground/category-card/category-card.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { CategoryQuestionComponent } from './own-game-start-page/own-game-playground/category-question/category-question.component';
+import { ModalQuestionComponent } from './own-game-start-page/own-game-playground/category-question/modal-question/modal-question.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +21,12 @@ import { GamesRoutingModule } from './games-routing.module';
     BoardGameDisplayComponent,
     DiceComponent,
     GamesComponent,
-    ModalComponent
+    ModalComponent,
+    OwnGameStartPageComponent,
+    OwnGamePlaygroundComponent,
+    CategoryCardComponent,
+    CategoryQuestionComponent,
+    ModalQuestionComponent
   ],
   exports: [
     BoardGameComponent,
@@ -23,6 +36,14 @@ import { GamesRoutingModule } from './games-routing.module';
     ModalComponent,
     GamesRoutingModule
   ],
-  imports: [CommonModule, GamesRoutingModule]
+  imports: [
+    CommonModule,
+    GamesRoutingModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    MatButtonModule
+  ],
+  entryComponents: [ModalQuestionComponent]
 })
 export class GamesModule {}

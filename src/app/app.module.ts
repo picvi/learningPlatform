@@ -13,8 +13,11 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { BgGetTensesService } from './bg-get-tenses.service';
 import { RegistrationService } from './registration.service';
-import { from } from 'rxjs';
 import { HideOnScrollDirective } from './hide-on-scroll.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,11 @@ import { HideOnScrollDirective } from './hide-on-scroll.directive';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
-    GamesModule
+    GamesModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [BgGetTensesService, RegistrationService],
   bootstrap: [AppComponent]
