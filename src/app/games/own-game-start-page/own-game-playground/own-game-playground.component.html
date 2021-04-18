@@ -1,20 +1,30 @@
-<div class="container">
-	<div *ngFor="let item of questions" >
-		<div *ngIf="!isCategoryChosen">
-			<app-category-card [category]="item.category" (onCategoryChange)="chooseCategory($event)"></app-category-card>
+<div class="container" style="flex-direction: column;">
+	<div *ngIf="!(svc.isAllCategoriesChecked | async)" class="container"  style="flex-direction: column;">
+		<h2 id="turn">It is {{svc.currentTurn | async}} turn</h2>
+		<div class="container" style="margin-top: 5rem;">
+			<div *ngFor="let item of questions" >
+				<div *ngIf="!isCategoryChosen">
+					<app-category-card [category]="item.category" (onCategoryChange)="chooseCategory($event)"></app-category-card>
+				</div>
+			</div>
+			<div *ngIf="isCategoryChosen" class="container" style="flex-direction: column;">
+				<div class="container">
+					<app-category-question *ngFor="let question of currentCategory?.questionsList" [question]="question"></app-category-question>
+				</div>
+				<button *ngIf="svc.isAllQuestionsChecked | async"
+					mat-flat-button 
+					color="primary"
+					(click)="goBack()">
+				<img src="assets/pics/undo.svg">
+				</button>
+			</div>
 		</div>
 	</div>
-	<div *ngIf="isCategoryChosen" class="container" style="flex-direction: column;">
-		<div class="container">
-			<app-category-question *ngFor="let question of currentCategory?.questionsList" [question]="question"></app-category-question>
+	<div *ngIf="svc.isAllCategoriesChecked | async">
+		<h2>Results:</h2>
+		<div *ngFor="let result of svc.getResults()">
+			<h2>{{ result.teamName }} - {{ result.score }}</h2>
 		</div>
-		<button
-			[disabled]="svc.isAllQuestionsChecked()"
-			mat-flat-button 
-			color="primary"
-			(click)="goBack()">
-			Go Back
-		</button>
 	</div>
 </div>
 

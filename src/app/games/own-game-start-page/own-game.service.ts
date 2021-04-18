@@ -1,14 +1,29 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IQuestions } from './asset/iquestions';
+import { IResult } from './asset/iresult';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OwnGameSvcService {
+export class OwnGameService {
   private firstTeamName!: string;
   private secondTeamName!: string;
   private currentCategory!: IQuestions | undefined;
+  private isFirstTeamTurn = true;
+  private firstTeamScore = 0;
+  private secondTeamScore = 0;
 
+  private currentTurn$: BehaviorSubject<string> = new BehaviorSubject('');
+  public currentTurn: Observable<string> = this.currentTurn$.asObservable();
+  private isAllQuestionsChecked$: BehaviorSubject<any> = new BehaviorSubject(
+    false
+  );
+  public isAllQuestionsChecked: Observable<boolean> = this.isAllQuestionsChecked$.asObservable();
+  private isAllCategoriesChecked$: BehaviorSubject<any> = new BehaviorSubject(
+    false
+  );
+  public isAllCategoriesChecked: Observable<boolean> = this.isAllCategoriesChecked$.asObservable();
   public questions: IQuestions[] = [
     {
       category: 'Poets and writers',
@@ -135,18 +150,58 @@ export class OwnGameSvcService {
   public setTeamsNames(firstName: string, secondName: string): void {
     this.firstTeamName = firstName;
     this.secondTeamName = secondName;
+    this.currentTurn$.next(this.firstTeamName);
   }
 
   public chooseCategory(categoryName: string): IQuestions | undefined {
     this.currentCategory = this.questions.find((item: IQuestions) => {
       return item.category === categoryName;
     });
+    this.isAllQuestionsChecked$.next(
+      this.currentCategoryCheckHandler(this.currentCategory)
+    );
     return this.currentCategory;
   }
 
-  public isAllQuestionsChecked(): boolean | undefined {
-    return this.currentCategory?.questionsList.every((question) => {
-      question.checked === true;
+  public currentCategoryCheckHandler(
+    category: IQuestions | undefined
+  ): boolean | undefined {
+    return category?.questionsList.every((question) => {
+      return question.checked === true;
     });
+  }
+
+  private allCategoriesCheckHandler(): boolean | undefined {
+    const result = this.questions.every((category) => {
+      return this.currentCategoryCheckHandler(category);
+    });
+    this.isAllCategoriesChecked$.next(result);
+    return result;
+  }
+
+  public setTurn(): void {
+    this.isFirstTeamTurn = !this.isFirstTeamTurn;
+    this.isFirstTeamTurn
+      ? this.currentTurn$.next(this.firstTeamName)
+      : this.currentTurn$.next(this.secondTeamName);
+    this.isAllQuestionsChecked$.next(
+      this.currentCategoryCheckHandler(this.currentCategory)
+    );
+    this.allCategoriesCheckHandler();
+  }
+
+  public counterIncrement(score: number): void {
+    if (this.isFirstTeamTurn) {
+      this.firstTeamScore += score;
+    } else {
+      this.secondTeamScore += score;
+    }
+  }
+
+  public getResults(): IResult[] {
+    return [
+      { teamName: this.firstTeamName, score: this.firstTeamScore },
+      { teamName: this.secondTeamName, score: this.secondTeamScore }
+    ];
   }
 }

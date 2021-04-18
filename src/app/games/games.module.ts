@@ -43,6 +43,7 @@ import { ModalQuestionComponent } from './own-game-start-page/own-game-playgroun
     MatButtonModule,
     FormsModule,
     MatButtonModule
-  ]
+  ],
+  entryComponents: [ModalQuestionComponent]
 })
 export class GamesModule {}

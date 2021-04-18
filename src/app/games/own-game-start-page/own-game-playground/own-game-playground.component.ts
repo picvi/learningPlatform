@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IQuestions } from '../asset/iquestions';
-import { OwnGameSvcService } from '../own-game-svc.service';
+import { OwnGameService } from '../own-game.service';
 
 @Component({
   selector: 'app-own-game-playground',
@@ -11,7 +11,7 @@ export class OwnGamePlaygroundComponent implements OnInit {
   public questions!: IQuestions[];
   public isCategoryChosen = false;
   public currentCategory!: IQuestions | undefined;
-  constructor(public svc: OwnGameSvcService) {}
+  constructor(public svc: OwnGameService) {}
 
   ngOnInit(): void {
     this.questions = this.svc.questions;

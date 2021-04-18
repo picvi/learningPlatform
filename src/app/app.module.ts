@@ -16,6 +16,8 @@ import { RegistrationService } from './registration.service';
 import { HideOnScrollDirective } from './hide-on-scroll.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     GamesModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [BgGetTensesService, RegistrationService],
   bootstrap: [AppComponent]

@@ -1,11 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild
-} from '@angular/core';
-import { OwnGameSvcService } from './own-game-svc.service';
+import { Component } from '@angular/core';
+import { OwnGameService } from './own-game.service';
 
 @Component({
   selector: 'app-own-game-start-page',
@@ -17,7 +11,7 @@ export class OwnGameStartPageComponent {
   public secondTeamName!: string;
   public gameIsStarted = false;
 
-  constructor(public svc: OwnGameSvcService, private renderer: Renderer2) {}
+  constructor(public svc: OwnGameService) {}
 
   public start(): void {
     this.svc.setTeamsNames(this.firstTeamName, this.secondTeamName);

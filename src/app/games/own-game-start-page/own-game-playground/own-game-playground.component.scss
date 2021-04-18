@@ -4,6 +4,13 @@
   justify-content: center;
 
 	button {
-		margin: 10rem;
+    position: absolute;
+    bottom: 3rem;
+    right: 1rem;
 	}
+}
+
+#turn {
+  position: absolute;
+  top: 5rem;
 }
