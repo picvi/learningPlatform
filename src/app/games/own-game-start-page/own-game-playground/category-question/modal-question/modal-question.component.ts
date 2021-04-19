@@ -7,12 +7,14 @@ import { OwnGameService } from '../../../own-game.service';
   templateUrl: './modal-question.component.html',
   styleUrls: ['./modal-question.component.scss']
 })
+
 export class ModalQuestionComponent implements OnInit {
   public timer = 60;
 
   ngOnInit(): void {
     this.getTimer();
   }
+
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
@@ -31,7 +33,6 @@ export class ModalQuestionComponent implements OnInit {
   public close(): void {
     this.dialogRef.close();
   }
-
   private getTimer(): void {
     const interval = setInterval(() => this.timer--, 1000);
     setTimeout(() => {
