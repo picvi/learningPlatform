@@ -30,13 +30,13 @@ export class OwnGameService {
       questionsList: [
         {
           question:
-            'A Scottish writer,he devoted all his time to writing detectives, an author of famous detective novels',
+            'He was a Belarusian humanist, scholar, translator and one of the first book printers in Eastern Europe.',
           score: 100,
           checked: false
         },
         {
           question:
-            'He is a Belarusian humanist, scholar, translator and one of the first book printers in Eastern Europe.',
+            'A Scottish writer,he devoted all his time to writing detectives, an author of famous detective novels',
           score: 200,
           checked: false
         },
@@ -69,31 +69,31 @@ export class OwnGameService {
       category: 'Great inventors',
       questionsList: [
         {
-          question: 'Who created “Facebook”?',
+          question:
+            'He waited more than 20 years to publish his theory on evolution.',
           score: 100,
           checked: false
         },
         {
           question:
-            'He waited more than 20 years to publish his theory on evolution.',
+            'Where was J. Alferov, a Nobel Prize Laureate in Physics born?',
           score: 200,
           checked: false
         },
         {
           question:
-            'Where was J. Alferov, a Nobel Prize Laureate in Physics born?',
+            'Who invented the first plane and had the first historic 12-second flight in 1903?',
           score: 300,
           checked: false
         },
         {
           question:
-            'Who invented the first plane and had the first historic 12-second flight in 1903?',
+            'For 25 years he worked in the U.S. space research programme.',
           score: 400,
           checked: false
         },
         {
-          question:
-            'For 25 years he worked in the U.S. space research programme.',
+          question: 'Who created “Facebook”?',
           score: 500,
           checked: false
         },
