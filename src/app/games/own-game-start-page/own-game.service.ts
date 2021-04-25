@@ -105,6 +105,83 @@ export class OwnGameService {
       ]
     },
     {
+      category: 'Famous songs',
+      questionsList: [
+        {
+          question: 'Name the song and the author',
+          score: 100,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/queen_we-will-rock-you.mp3',
+          audioName: 'Queen - we willrock you'
+        },
+        {
+          question: 'Name the song and the author',
+          score: 100,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/bi-2_moy-rok-n-roll.mp3',
+          audioName: 'Би-2 - мой рок-н-ролл'
+        },
+        {
+          question: 'Name the song and the author',
+          score: 100,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/bon-jovi_it-s-my-life.mp3',
+          audioName: "Bon Jovi - it's my life"
+        },
+        {
+          question: 'Name the song and the author',
+          score: 200,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/lana-del-rey_summertime-sadness.mp3',
+          audioName: 'Lana Del Rey - summertime sadness'
+        },
+        {
+          question: 'Name the song and the author',
+          score: 200,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/nirvana_smells-like-teen-spirit.mp3',
+          audioName: 'Nirvana - smells like teen spirit'
+        },
+        {
+          question: 'Name the song and the author',
+          score: 200,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/queen_i-want-to-break-free.mp3',
+          audioName: 'Queen - I want to break free'
+        },
+        {
+          question: 'Name the song and the author',
+          score: 300,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/the-beatles-revival-band_yesterday.mp3',
+          audioName: 'The Beatles - yesterday'
+        },
+        {
+          question: 'Name the song and the author',
+          score: 300,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/bi-2_polkovniku-nikto-ne-pishet.mp3',
+          audioName: 'Би-2 - полковнику никто не пишет'
+        },
+        {
+          question: 'Name the song and the author',
+          score: 300,
+          checked: false,
+          isAudio: true,
+          audioPath: 'assets/audio/j-mors_ne-umirai.mp3',
+          audioName: 'J-mors - не умирай'
+        }
+      ]
+    },
+    {
       category: 'Music and Art',
       questionsList: [
         {
