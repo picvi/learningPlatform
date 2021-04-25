@@ -18,7 +18,13 @@ export class CategoryQuestionComponent {
     const instance = this.dialog.open(ModalQuestionComponent, {
       disableClose: true,
       hasBackdrop: true,
-      data: { question: this.question.question, score: this.question.score }
+      data: {
+        question: this.question.question,
+        score: this.question.score,
+        isAudio: this.question?.isAudio,
+        audioPath: this.question?.audioPath,
+        audioName: this.question?.audioName
+      }
     });
     instance.afterClosed().subscribe((data) => {
       this.question.checked = true;

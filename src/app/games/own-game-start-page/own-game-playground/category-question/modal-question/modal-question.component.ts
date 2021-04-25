@@ -7,7 +7,6 @@ import { OwnGameService } from '../../../own-game.service';
   templateUrl: './modal-question.component.html',
   styleUrls: ['./modal-question.component.scss']
 })
-
 export class ModalQuestionComponent implements OnInit {
   public timer = 60;
 
@@ -20,6 +19,9 @@ export class ModalQuestionComponent implements OnInit {
     public data: {
       question: string;
       score: number;
+      isAudio?: boolean;
+      audioPath?: string;
+      audioName?: string;
     },
     private svc: OwnGameService,
     private dialogRef: MatDialogRef<ModalQuestionComponent>
